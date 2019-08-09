@@ -1,0 +1,8 @@
+#! /usr/bin/sh
+date
+echo
+echo $USER on $HOSTNAME \010
+echo running $OSTYPE \010
+echo Uptime: `uptime`
+
+

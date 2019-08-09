@@ -1,0 +1,42 @@
+.TH "w3comm.c" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3comm.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3client.h>\fP
+.br
+\fC#include <w3comm.h>\fP
+.br
+\fC#include <w3error.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include <stdio.h>\fP
+.br
+\fC#include <unistd.h>\fP
+.br
+\fC#include <fcntl.h>\fP
+.br
+\fC#include <errno.h>\fP
+.br
+\fC#include <w3clientconfig.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBboolean\fP \fBw3SendData\fP (const void *data, size_t \fBsize\fP, int sock)"
+.br
+.RI "\fISend data through a connection. \fP"
+.ti -1c
+.RI "void * \fBw3ReceiveData\fP (unsigned int *\fBsize\fP, int sock)"
+.br
+.RI "\fIReceive data through a connection. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

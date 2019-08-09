@@ -1,0 +1,48 @@
+.TH "w3URI" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3URI \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3types.h>\fP
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "char * \fBhostname\fP"
+.br
+.ti -1c
+.RI "char * \fBpath\fP"
+.br
+.ti -1c
+.RI "char * \fBfilename\fP"
+.br
+.ti -1c
+.RI "short int \fBport\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Describes a URI. Use w3ParseURI to retrieve this structure out of a given const char* string. 
+.PP
+.SH "Field Documentation"
+.PP 
+.SS "char* \fBw3URI::filename\fP"
+.PP
+Complete filename of the file to be retrieved. THIS IS NOT USED YET ! 
+.SS "char* \fBw3URI::hostname\fP"
+.PP
+Name of the host running the server. 
+.SS "char* \fBw3URI::path\fP"
+.PP
+Complete path to the file including all necessary slashes and so on. 
+.SS "short int \fBw3URI::port\fP"
+.PP
+Port number of the server process. HTTP servers normally run on port 80. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

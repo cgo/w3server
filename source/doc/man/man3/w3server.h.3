@@ -1,0 +1,76 @@
+.TH "w3server.h" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3server.h \- Main functions to set up a server. To set up a server, simply call \fBw3StartServer(int portnumber)\fP. The rest will hopefully be done by the server itself. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3types.h>\fP
+.br
+\fC#include <w3comm.h>\fP
+.br
+\fC#include <netinet/in.h>\fP
+.br
+\fC#include <sys/socket.h>\fP
+.br
+\fC#include <unistd.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBw3Server\fP"
+.br
+.ti -1c
+.RI "struct \fBw3ServerConnection\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBw3ServerConnection\fP * \fBw3ServerAccept\fP (\fBw3Server\fP *server)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerInit\fP (\fBw3Server\fP *server)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerClose\fP (\fBw3Server\fP *server)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerDisconnect\fP (\fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "char * \fBw3ServerGetToken\fP (char *str, int *idx)"
+.br
+.ti -1c
+.RI "char * \fBw3ServerGetPath\fP (char *str)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerSendFile\fP (char *path, \fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerSendError\fP (int errorcode, \fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerServeClient\fP (\fBw3Server\fP *server, \fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3StartServer\fP (int port)"
+.br
+.ti -1c
+.RI "void \fBw3ServerMessage\fP (const char *msg)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Main functions to set up a server. To set up a server, simply call \fBw3StartServer(int portnumber)\fP. The rest will hopefully be done by the server itself. 
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

@@ -1,0 +1,67 @@
+
+    Copyright (C) by Christian Gosch.
+
+    This file is part of w3server, a very small HTTP(-subset) server.
+
+    w3server is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    Foobar is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+IMPORTANT NOTICE:
+-----------------
+This is a simple HTTP server and a client program written in C. 
+Note that the server may not support the whole of HTTP 1.0, but it works ok for
+simple use. Please contact us if you want to make additions! We would love to 
+add anything useful to the project.
+We are not working actively on it at the moment.
+There was a TCL/TK interface that used the client program contained in the
+server source code. The client program is still there and can be used,
+but I removed the TCL/TK interface code since I have no current contact details
+of its author, Liuben Tonev.
+-- Christian Gosch <christian a_t goschs d_o_t de>
+
+Documentation can be found in doc/html/index.html.
+The explanations how to build and use the programs can be found there.
+This software was originally written in the scope of a computer networks lecture at
+university.
+The report is in docs/report.html (this is also referenced in the
+code documentation mentioned above).
+
+Prior to building, you should change some paths in
+ source/server/src/w3server.c
+which are hard-wired in the source (if you feel that should be different,
+please make contributions!)
+
+To make a build of the whole package try
+ make clean; make
+or
+ make clean; make ALL
+in this directory.
+
+If something does not work, try
+ make configure
+
+To make new configure scripts for all packages, type
+ make autoconf
+You need GNU autoconf for this.
+
+If a package does not compile correctly, it might be a good idea to do
+a "make clean" in that package.
+
+You can also change to the server or client directory and configure and make from there
+directly using the configure scripts.
+I recommend using only the server, there is no real need for a client
+beside educational purposes.
+
+The executables can be found in the respective source directories.
+and are called client or server respectively.

@@ -1,0 +1,55 @@
+.TH "w3smtp.c" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3smtp.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3smtp.h>\fP
+.br
+\fC#include <w3comm.h>\fP
+.br
+\fC#include <w3string.h>\fP
+.br
+\fC#include <w3types.h>\fP
+.br
+\fC#include <w3client.h>\fP
+.br
+\fC#include <w3error.h>\fP
+.br
+\fC#include <w3clientconfig.h>\fP
+.br
+\fC#include <unistd.h>\fP
+.br
+\fC#include <stdio.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBw3Mail\fP * \fBw3CreateMail\fP (char *rcpt, char *sender, char *data)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3DestroyMail\fP (\fBw3Mail\fP *mail)"
+.br
+.ti -1c
+.RI "void * \fBw3ReceiveMailReply\fP (unsigned int *\fBsize\fP, int sock)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3SendMail\fP (\fBw3Mail\fP *mail, const char *mailer, int port)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3SendMailFile\fP (const char *path)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void* w3ReceiveMailReply (unsigned int * size, int sock)"
+.PP
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

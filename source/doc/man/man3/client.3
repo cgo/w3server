@@ -1,0 +1,277 @@
+.TH "Client" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Client \- 
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBclientGlobalStruct\fP"
+.br
+.ti -1c
+.RI "struct \fBw3Mail\fP"
+.br
+.ti -1c
+.RI "struct \fBw3URI\fP"
+.br
+.ti -1c
+.RI "struct \fBw3ClientConnection\fP"
+.br
+.ti -1c
+.RI "struct \fBw3Document\fP"
+.br
+.in -1c
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBtrue\fP   1"
+.br
+.ti -1c
+.RI "#define \fBfalse\fP   0"
+.br
+.ti -1c
+.RI "#define \fBCR\fP   13"
+.br
+.ti -1c
+.RI "#define \fBLF\fP   10"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef int \fBboolean\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBw3ClientInit\fP ()"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientConnect\fP (\fBw3ClientConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientGetDocument\fP (\fBw3Document\fP *doc)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDisconnect\fP (\fBw3ClientConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientGetImagePath\fP (char *uriString, \fBboolean\fP withoutHostname)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDocToFile\fP (const char *uriString, const char *filename, int port)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDocToFileMT\fP (const char *uriString, const char *filename, int port)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientJoinAllThreads\fP ()"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDestroyAllThreads\fP ()"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3SendData\fP (const void *data, size_t \fBsize\fP, int sock)"
+.br
+.RI "\fISend data through a connection. \fP"
+.ti -1c
+.RI "void * \fBw3ReceiveData\fP (unsigned int *\fBsize\fP, int sock)"
+.br
+.RI "\fIReceive data through a connection. \fP"
+.ti -1c
+.RI "void \fBw3Error\fP (const char *message)"
+.br
+.ti -1c
+.RI "\fBw3Mail\fP * \fBw3CreateMail\fP (char *rcpt, char *sender, char *data)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3DestroyMail\fP (\fBw3Mail\fP *mail)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3SendMail\fP (\fBw3Mail\fP *mail, const char *mailer, int port)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3SendMailFile\fP (const char *path)"
+.br
+.ti -1c
+.RI "char * \fBcomposeString\fP (char *str1, char *str2)"
+.br
+.ti -1c
+.RI "char * \fBcopyString\fP (char *str)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ParseURI\fP (const char *uristr, \fBw3URI\fP *uri)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define CR   13"
+.PP
+.SS "#define false   0"
+.PP
+.SS "#define LF   10"
+.PP
+.SS "#define true   1"
+.PP
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef int \fBboolean\fP"
+.PP
+.SH "Function Documentation"
+.PP 
+.SS "char* composeString (char * str1, char * str2)"
+.PP
+Concatenates \fCstr1\fP and \fCstr2\fP. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new string containing the concatenation of \fCstr1</CODE and \fCstr2\fP. \fP
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+\fC Christian Gosch \fP
+.RE
+.PP
+
+.SS "char* copyString (char * str)"
+.PP
+Copies \fCstr\fP. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new string. 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Christian Gosch 
+.RE
+.PP
+
+.SS "\fBboolean\fP w3ClientConnect (\fBw3ClientConnection\fP * con)"
+.PP
+Sets up a connection to \fCcon\fP. The following members of \fCcon\fP have to be set correctly: 
+.br
+ \fChostname\fP \fCport\fP 
+.PP
+\fBAuthor:\fP
+.RS 4
+Christian Gosch 
+.RE
+.PP
+
+.SS "\fBboolean\fP w3ClientDestroyAllThreads ()"
+.PP
+Kills all pending threads and frees the taken memory. 
+.SS "\fBboolean\fP w3ClientDisconnect (\fBw3ClientConnection\fP * con)"
+.PP
+Closes the connection \fCcon\fP. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if successful, otherwise \fCfalse\fP. 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Christian Gosch 
+.RE
+.PP
+
+.SS "\fBboolean\fP w3ClientDocToFile (const char * uriString, const char * filename, int port)"
+.PP
+Retrieves the URI described in uriString to file filename. Also retrieves all images using the lexical analyzer for images (img.lex). The html file is stored in \fCfilenamey\fP and in the cache directory defined by \fCW3_CLIENT_CACHE_DIR\fP. Downloaded html files are stored flatly in the cache by using the whole URI and substituting slashes by underscores ('/' --> '_'). So, 
+.br
+ www.goschs.de/hund/katze/maus.html would be cache/www.goschs.de_hund_katze_maus.html
+.br
+ All images are stored in subdirectories, starting with the hostname. E.g., 
+.br
+ www.goschs.de/www/images/hund.gif would be 
+.br
+ cache/www.goschs.de/www/images/hund.gif 
+.SS "\fBboolean\fP w3ClientDocToFileMT (const char * uriString, const char * filename, int port)"
+.PP
+This is not supporting the cache structure yet. It is not maintained since it is not yet needed for the assignment in CNS. Opens a thread and returns immediately, without joining the thread. Use w3ClientJoin- od DestroyAllThreads () to join them. Be sure to always call one of the latter two to free the memory used by the thread structures, as soon as you have no more threads pending. 
+.SS "\fBboolean\fP w3ClientGetDocument (\fBw3Document\fP * doc)"
+.PP
+Gets a document described by \fCdoc\fP. All fields in \fCdoc\fP except \fCdata\fP and \fCdataLength\fP have to be set correctly. The latter two are filled by this function, \fCdata\fP contains the received data of length \fCdataLength\fP. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if successful, otherwise \fCfalse\fP. 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Christian Gosch 
+.RE
+.PP
+
+.SS "\fBboolean\fP w3ClientGetImagePath (char * uriString, \fBboolean\fP withoutHostname)"
+.PP
+.SS "void w3ClientInit ()"
+.PP
+Initialization of global data structures. Call this before doing anything with the client functions ! 
+.SS "\fBboolean\fP w3ClientJoinAllThreads ()"
+.PP
+Joins all pending threads and frees the taken memory. 
+.SS "\fBw3Mail\fP* w3CreateMail (char * rcpt, char * sender, char * data)"
+.PP
+Takes recipient, sender and mail body and allocates a new \fBw3Mail\fP structure of it. 
+.SS "\fBboolean\fP w3DestroyMail (\fBw3Mail\fP * mail)"
+.PP
+Destroys the given mail. 
+.SS "void w3Error (const char * message)"
+.PP
+Prints an error message. 
+.SS "\fBboolean\fP w3ParseURI (const char * uristr, \fBw3URI\fP * uri)"
+.PP
+Parses the URI given in \fCuristr\fP and stores the corresponding values is \fCuri\fP. No error checking or checks for malformed URIs is done so far. This has to be added. 
+.SS "void* w3ReceiveData (unsigned int * size, int sock)"
+.PP
+Receive data through a connection. 
+.PP
+Receives data from \fCcon\fP into \fCvoid *data\fP. The size of the received block is stored in \fCsize\fP. 
+.PP
+\fBAuthor:\fP
+.RS 4
+Christian Gosch 
+.RE
+.PP
+
+.SS "\fBboolean\fP w3SendData (const void * data, size_t size, int sock)"
+.PP
+Send data through a connection. 
+.PP
+Sends data in \fCvoid *data\fP of size \fCsize_t size\fP to \fCcon\fP. 
+.PP
+\fBAuthor:\fP
+.RS 4
+Christian Gosch 
+.RE
+.PP
+
+.SS "\fBboolean\fP w3SendMail (\fBw3Mail\fP * mail, const char * mailer, int port)"
+.PP
+Sends the given mail to the SMTP server given by \fCmailer\fP running on port \fCport\fP. 
+.SS "\fBboolean\fP w3SendMailFile (const char * path)"
+.PP
+Sends the file \fCpath\fP, containing a mail message. 
+.br
+ The file must conform to the following specification: 
+.br
+ First line: Recipient 
+.br
+ Second line: Sender 
+.br
+ Third line: mailer 
+.br
+ Fourth line: port number on which the mailer accepts connections 
+.br
+ The following lines contain the mail body, including ALL headers the sender wants to be sent (including sender and recipient headers). 

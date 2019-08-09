@@ -1,0 +1,61 @@
+.TH "main.c" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+main.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3client.h>\fP
+.br
+\fC#include <w3uri.h>\fP
+.br
+\fC#include <w3types.h>\fP
+.br
+\fC#include <w3string.h>\fP
+.br
+\fC#include <w3smtp.h>\fP
+.br
+\fC#include <stdio.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include <string.h>\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBW3HELPTEXT\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmain2\fP (int argc, char *argv[])"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define W3HELPTEXT"
+.PP
+\fBValue:\fP
+.PP
+.nf
+{\
+    printf('Usage: \t\t%s get <full path of file> <destination file> <port number>\n',argv[0]);\
+    printf('or\n \t\t%s mail <mailfile>\n',argv[0]);\
+    printf('\t<mailfile> must be a file consisting of the first four \n\t\tlines as recipient, sender, mailhost, portnumber, followed by the message body.\n');\
+    printf('\t<full path of file> must be of the form my.host.address/some_path/file.extension.\n');\
+    printf('\t\tNote that no protocol definition is allowed so far.\n');\
+}
+.fi
+.SH "Function Documentation"
+.PP 
+.SS "int main2 (int argc, char * argv[])"
+.PP
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

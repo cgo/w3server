@@ -1,0 +1,44 @@
+1. How to build me
+------------------
+1.1 What you need
+ - Linux or Solaris
+   (Tested with Linux 2.2.13 and libc6)
+ - pthread library
+ - gcc or similar compiler (tested with egcs 2.91-66)
+ - GNU make
+ - libfl (from the flex package)
+ - flex if you wish to remake the C-code for the lexical analyzers
+   from the .lex files
+
+1.2 What to do
+ cd client
+ make
+ cd ../server
+  edit the file src/w3server.c to change the HTML base directory and
+  any other files or paths you want to have changed.
+ make
+
+1.3 If there are any problems ...
+ ... check the output gcc generates and eventually modify the Makefiles.
+In case of fire send email to 
+christian@goschs.de or
+beamb002@students.unisa.edu.au or 
+tonly002@students.unisa.edu.au
+
+2. Added functionality to standard version
+------------------------------------------
+
+2.1
+It is now possible to send emails via SMTP. Only the rudimentary
+protocol is supported, no MIME messages may be sent so far.
+For further information see file include/w3smtp.h
+
+2.2
+Images should be downloaded automagically when an html file is
+downloaded.
+We used flex to generate the needed lexical analyzer. In order to
+display the html file correctly with the Tcl displayer, it must be
+piped through the correct program which hopefully replaces all IMG
+tags with the corresponding local filenames for the images.
+'correct' is built together with the client program when you type 'make' in the client directory.
+

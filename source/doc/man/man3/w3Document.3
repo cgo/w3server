@@ -1,0 +1,42 @@
+.TH "w3Document" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3Document \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3types.h>\fP
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBw3URI\fP \fBuri\fP"
+.br
+.ti -1c
+.RI "char * \fBdata\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBdataLength\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Data structure for a document. 
+.PP
+.SH "Field Documentation"
+.PP 
+.SS "char* \fBw3Document::data\fP"
+.PP
+The actual document data. Normally filled in by \fC\fBw3ClientGetDocument()\fP\fP. 
+.SS "unsigned int \fBw3Document::dataLength\fP"
+.PP
+Length of the document data. 
+.SS "\fBw3URI\fP \fBw3Document::uri\fP"
+.PP
+URI structure describing the file containing the document. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

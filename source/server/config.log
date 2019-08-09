@@ -1,0 +1,30 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:529: checking for gcc
+configure:642: checking whether the C compiler (gcc  -L/home/christian/pgm/lib) works
+configure:658: gcc -o conftest   -L/home/christian/pgm/lib conftest.c  1>&5
+configure:684: checking whether the C compiler (gcc  -L/home/christian/pgm/lib) is a cross-compiler
+configure:689: checking whether we are using GNU C
+configure:698: gcc -E conftest.c
+configure:717: checking whether gcc accepts -g
+configure:751: checking for doxygen
+configure:780: checking for pthread_create in -lpthread
+configure:799: gcc -o conftest -g -O2  -L/home/christian/pgm/lib conftest.c -lpthread   1>&5
+configure:829: checking for recv in -lsocket
+configure:848: gcc -o conftest -g -O2  -L/home/christian/pgm/lib conftest.c -lsocket  -lpthread  1>&5
+/usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.6/../../../../i686-pc-linux-gnu/bin/ld: cannot find -lsocket
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 837 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char getservbyname();
+
+int main() {
+getservbyname()
+; return 0; }
+configure:876: checking for connect in -lnsl
+configure:895: gcc -o conftest -g -O2  -L/home/christian/pgm/lib conftest.c -lnsl  -lpthread  1>&5

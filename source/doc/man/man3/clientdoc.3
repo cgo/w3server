@@ -1,0 +1,102 @@
+.TH "clientdoc" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+clientdoc \- Documentation for the client
+.SH "Introduction"
+.PP
+This is the documentation for the client program. It is the command line part of the HTML browser. The second part of the report can be found \fChere\fP. 
+.SH "Building client"
+.PP
+.SS "What you need"
+.PD 0
+.IP "\(bu" 2
+Linux or Solaris 
+.br
+ (Tested with Linux 2.2.13 and libc6) 
+.IP "\(bu" 2
+pthread library 
+.IP "\(bu" 2
+gcc or similar compiler (tested with egcs 2.91-66) 
+.IP "\(bu" 2
+GNU make 
+.IP "\(bu" 2
+libfl (from the flex package) 
+.IP "\(bu" 2
+flex if you wish to remake the C-code for the lexical analyzers from the .lex files (usually not) 
+.IP "\(bu" 2
+GNU autoconf if you want to remake the configure scripts 
+.PP
+.SS "Building it"
+There are few things to do: 
+.PD 0
+
+.IP "\(bu" 2
+Change to the client directory  
+.IP "\(bu" 2
+Type \fC./configure\fP to configure the source for your system. If configure reports any error, the source will very likely not build correctly. Please report bugs to the authors. 
+.IP "\(bu" 2
+Type \fCmake\fP at the command prompt. This should build the client executable in the client directory.
+.br
+ Optional: Call \fCmake clean\fP to delete all object files and auto-save files. \fCmake stat\fP outputs a little code statistics. You need the \fCwc\fP program to use this. 
+.IP "\(bu" 2
+In the rare case you should want to rebuild the flex analyser, call 
+.br
+ \fCflex -i img.lex\fP 
+.br
+ in the source directory and then 
+.br
+ \fCmake clean; make\fP 
+.br
+ in the client directory. 
+.PP
+.SH "Usage"
+.PP
+The command line format to call \fCclient\fP is: 
+.br
+ 
+.SS "For getting a HTML page"
+\fCclient get full-path-to-file destination-file port\fP 
+.br
+ Where 
+.PD 0
+
+.IP "\(bu" 2
+\fCfull-path-to-file\fP is the full URI, like 
+.br
+ \fCio.iupiter.universe/www/hund.html\fP.  
+.IP "\(bu" 2
+\fCdestination-file\fP is the local file where the downloaded file is to be stored. 
+.IP "\(bu" 2
+\fCport\fP is the port number the server is running on. Usually, this is 80. 
+.PP
+.SS "For sending mail"
+\fCclient mail mailfile\fP 
+.br
+ Where 
+.PD 0
+
+.IP "\(bu" 2
+\fCmailfile\fP is a filename of a file of the following format: 
+.br
+ First line: Recipient 
+.br
+ Second line: Sender 
+.br
+ Third line: mailer 
+.br
+ Fourth line: port number on which the mailer accepts connections 
+.br
+ The following lines contain the mail body, including ALL headers the sender wants to be sent (including sender and recipient headers).  
+.PP
+.SH "Downloaded Files"
+.PP
+If you download a HTML file, for example www.animals.org/dog/cat/mouse.html, it is stored in the given destination file AND in the cache subdirectory (which is specified in client/src/w3clientconfig.h). The HTML file is scanned for image tags and the corresponding images are downloaded and stored in the cache directory, in this example that could be 
+.br
+ cache/www.animals.org/pictures/dog.gif 
+.br
+ The HTML pages are stored flatly in cache/, e.g. as 
+.br
+ cache/www.animals.org_index.html 
+.br
+ The slashes are replaced by underscores. This CAN lead to clashes but that is neglected for this program. In a release version, another mechanism would have to be used. 

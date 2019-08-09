@@ -1,0 +1,42 @@
+.TH "w3smtp.h" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3smtp.h \- Functions for sending email via SMTP. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3types.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBw3Mail\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBw3Mail\fP * \fBw3CreateMail\fP (char *rcpt, char *sender, char *data)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3DestroyMail\fP (\fBw3Mail\fP *mail)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3SendMail\fP (\fBw3Mail\fP *mail, const char *mailer, int port)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3SendMailFile\fP (const char *path)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Functions for sending email via SMTP. 
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

@@ -1,0 +1,73 @@
+.TH "w3html.c" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3html.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3html.h>\fP
+.br
+\fC#include <w3string.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "char * \fBw3HTMLGenerateError\fP (char *header, char *info, int pagecode)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "char \fBW3_HTML_ERROR_HEAD\fP []"
+.br
+.ti -1c
+.RI "char \fBW3_HTML_ERROR_FOOT\fP []"
+.br
+.ti -1c
+.RI "char \fBW3_HTML_PAGE_400\fP [] = '<h2>Bad request</h2>\\n'"
+.br
+.ti -1c
+.RI "char \fBW3_HTML_PAGE_404\fP [] = '<h2>Not found</h2>\\n'"
+.br
+.ti -1c
+.RI "char \fBW3_HTML_PAGE_503\fP [] = '<h2>Service unavailable</h2>\\n'"
+.br
+.ti -1c
+.RI "char \fBW3_HTML_PAGE_XXX\fP [] = '<h2>General error</h2>\\n'"
+.br
+.in -1c
+.SH "Variable Documentation"
+.PP 
+.SS "char \fBW3_HTML_ERROR_FOOT\fP[]"
+.PP
+\fBInitial value:\fP
+.PP
+.nf
+ '<hr>\n <address>W3 Server / Christian Gosch</address><br>\n<copyright>Copyright (C) by Christian Gosch. This software is distributed under the terms of the GNU General Public License, which should be supplied with the source code of the software.</copyright><br>\n\
+</body></html>\n'
+.fi
+.SS "char \fBW3_HTML_ERROR_HEAD\fP[]"
+.PP
+\fBInitial value:\fP
+.PP
+.nf
+ '<html><head><title>\nW3 Server error message</title></head>\n\
+<body bgcolor=black text=white><img src=/icons/w3server1.png alt=\'W3 Server / CNS 2000\'>\n'
+.fi
+.SS "char \fBW3_HTML_PAGE_400\fP[] = '<h2>Bad request</h2>\\n'"
+.PP
+.SS "char \fBW3_HTML_PAGE_404\fP[] = '<h2>Not found</h2>\\n'"
+.PP
+.SS "char \fBW3_HTML_PAGE_503\fP[] = '<h2>Service unavailable</h2>\\n'"
+.PP
+.SS "char \fBW3_HTML_PAGE_XXX\fP[] = '<h2>General error</h2>\\n'"
+.PP
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

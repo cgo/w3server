@@ -1,0 +1,41 @@
+AC_INIT(src/w3client.c)
+
+AC_PROG_CC
+AC_CHECK_PROG(DOXYGEN,doxygen,doxygen doxygen.config,echo)
+
+AC_CHECK_LIB(pthread,pthread_create,,
+	[echo "***** :( Please install libpthread first :( *****"; exit])
+
+AC_CHECK_LIB(socket,recv)
+AC_CHECK_LIB(nsl,connect)
+AC_CHECK_LIB(fl,main,[echo "Found libfl"],[echo "***** You need libfl (from the flex \
+			    lexical analyzer generator package) *****"; exit])
+
+AC_CONFIG_HEADER(include/config.h)
+AC_OUTPUT(./Makefile)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

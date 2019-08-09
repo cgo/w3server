@@ -1,0 +1,59 @@
+.TH "w3client.h" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3client.h \- Connection and higher level communication functions. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3types.h>\fP
+.br
+\fC#include <w3thread.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBclientGlobalStruct\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBw3ClientInit\fP ()"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientConnect\fP (\fBw3ClientConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientGetDocument\fP (\fBw3Document\fP *doc)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDisconnect\fP (\fBw3ClientConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientGetImagePath\fP (char *uriString, \fBboolean\fP withoutHostname)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDocToFile\fP (const char *uriString, const char *filename, int port)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDocToFileMT\fP (const char *uriString, const char *filename, int port)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientJoinAllThreads\fP ()"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDestroyAllThreads\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Connection and higher level communication functions. 
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

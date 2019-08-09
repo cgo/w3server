@@ -1,0 +1,35 @@
+.TH "w3comm.h" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3comm.h \- Convenient communication functions (to get rid of thr messy read/write stuff). 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3types.h>\fP
+.br
+\fC#include <w3client.h>\fP
+.br
+\fC#include <sys/types.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBboolean\fP \fBw3SendData\fP (const void *data, size_t \fBsize\fP, int sock)"
+.br
+.RI "\fISend data through a connection. \fP"
+.ti -1c
+.RI "void * \fBw3ReceiveData\fP (unsigned int *\fBsize\fP, int sock)"
+.br
+.RI "\fIReceive data through a connection. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Convenient communication functions (to get rid of thr messy read/write stuff). 
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

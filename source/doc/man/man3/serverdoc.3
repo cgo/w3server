@@ -1,0 +1,83 @@
+.TH "serverdoc" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+serverdoc \- Documentation for the server
+.SH "Introduction"
+.PP
+This is the documentation for the server program. 
+.br
+ It is a simple multithreaded HTTP server. The second part of the report can be found \fChere\fP. Note that there may be links in that report to code documentation that don't work. Use this documentation directly instead. 
+.SH "Building server"
+.PP
+.SS "What you need"
+.PD 0
+.IP "\(bu" 2
+Linux or Solaris 
+.br
+ (Tested with Linux 2.2.13 and libc6) 
+.IP "\(bu" 2
+pthread library 
+.IP "\(bu" 2
+gcc or similar compiler (tested with egcs 2.91-66) 
+.IP "\(bu" 2
+GNU make 
+.IP "\(bu" 2
+libfl (from the flex package) 
+.IP "\(bu" 2
+flex if you wish to remake the C-code for the lexical analyzers from the .lex files (usually not) 
+.PP
+.SS "Building it"
+server needs a little bit more attention than client: 
+.PD 0
+
+.IP "\(bu" 2
+Change to the server directory  
+.IP "\(bu" 2
+Type \fC./configure\fP to configure the source for your system. If configure reports any error, the source will very likely not build correctly. Please report bugs to the authors. 
+.IP "\(bu" 2
+Edit the file src/w3server.c and \fBchange the global variable\fP \fCHTDOC_BASE\fP to the root directory containing your html files. Have a look at the other variables, even if they are unlikely to require any changes.  
+.IP "\(bu" 2
+Type \fCmake\fP at the command prompt. This should build the server executable in the server directory.
+.br
+ If something does not compile, it might be a good idea to call \fCmake clean\fP first. Optional: Call \fCmake clean\fP to delete all object files and auto-save files. \fCmake stat\fP outputs a little code statistics. You need the \fCwc\fP program to use this. 
+.PP
+.SH "Usage"
+.PP
+The command line format to call \fCserver\fP is: 
+.br
+ \fCserver port\fP 
+.br
+ Where 
+.PD 0
+
+.IP "\(bu" 2
+\fCport\fP is the port number the server is running on. The standard is 80, but you must supply the port number anyway. 
+.PP
+.SH "Technical: Operation of server"
+.PP
+.SS "main.c"
+Call to w3StartServer (in \fBw3server.c\fP), the argument being the portnumber. This call does everything the calling function wants, namely setting up a simple HTTP server for the given port :-)
+.SS "w3StartServer"
+Calls w3ServerInit to initialize the server. This sets up the socket and fills in the given \fBw3Server\fP structure.
+.PP
+Sets up 5 threads of execution which do the following: 1. Call w3ServerAccept to accept a connection request from a client. 1.a) when a connection is accepted, a new thread is immediately started to replace the actual thread. 2. Call w3ServerServeClient to handle anything the client could want. 3. Call w3ServerDisconnect to close the connection.
+.SS "w3ServerAccept"
+Calls the listen() library function to set the socket up to listen to one incoming connection request. Calls the accept() library function to accept a connection on the previously created socket (created by w3ServerInit). Returns a pointer to a \fBw3ServerConnection\fP structure.
+.SS "w3ServerServeClient"
+Receives a request string from the (connected) client and responds to it using w3ServerRespond.
+.SS "w3ServerRespond"
+Parses the given request string for the requests GET, POST, HEAD, of which currently only GET is handled properly (I hope). It responds to GET by sending the requested file to the client.
+.SS "Error handling"
+It was tried to catch any error that is likely to occur, but since this is an early development stage, nothing is guaranteed ;) Errors like file-not-found in a request are handled by sending an error page to the client (see routines in \fBw3html.h\fP / \fBw3html.c\fP).
+.SH "Known bugs"
+.PP
+Currently, no bugs are known. If you encounter a bug, please report it to 
+.br
+ \fCChristian Gosch\fP 
+.br
+ or 
+.br
+ \fCLiuben Tonev\fP 
+.br
+ 

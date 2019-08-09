@@ -1,0 +1,127 @@
+.TH "w3client.c" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3client.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include <string.h>\fP
+.br
+\fC#include <unistd.h>\fP
+.br
+\fC#include <w3client.h>\fP
+.br
+\fC#include <w3types.h>\fP
+.br
+\fC#include <w3uri.h>\fP
+.br
+\fC#include <w3error.h>\fP
+.br
+\fC#include <w3string.h>\fP
+.br
+\fC#include <w3comm.h>\fP
+.br
+\fC#include <w3thread.h>\fP
+.br
+\fC#include <w3clientconfig.h>\fP
+.br
+\fC#include <sys/types.h>\fP
+.br
+\fC#include <netinet/in.h>\fP
+.br
+\fC#include <netdb.h>\fP
+.br
+\fC#include <sys/stat.h>\fP
+.br
+\fC#include <fcntl.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBMTDocStruct\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fByy_scan_buffer\fP (const char *buffer, int len)"
+.br
+.ti -1c
+.RI "void \fBw3ClientInit\fP ()"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientConnect\fP (\fBw3ClientConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDisconnect\fP (\fBw3ClientConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientGetImagePath\fP (char *uriString, \fBboolean\fP withoutHostname)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientGetAllImages\fP (\fBw3Document\fP *doc)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientGetDocument\fP (\fBw3Document\fP *doc)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDocToFile\fP (const char *uriString, const char *filename, int port)"
+.br
+.ti -1c
+.RI "void * \fBMTGetDoc\fP (void *arg)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDocToFileMT\fP (const char *uriString, const char *filename, int port)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientJoinAllThreads\fP ()"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ClientDestroyAllThreads\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "char * \fBW3_CLIENT_CACHE_DIR\fP = W3_CLIENT_CACHE_DIR_DEF"
+.br
+.ti -1c
+.RI "char * \fBW3_CLIENT_INDEX_HTML\fP = W3_CLIENT_INDEX_HTML_DEF"
+.br
+.ti -1c
+.RI "FILE * \fByyout\fP"
+.br
+.ti -1c
+.RI "\fBclientGlobalStruct\fP \fBclientGlobal\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void* MTGetDoc (void * arg)"
+.PP
+.SS "\fBboolean\fP w3ClientGetAllImages (\fBw3Document\fP * doc)"
+.PP
+.SS "void yy_scan_buffer (const char * buffer, int len)"
+.PP
+.SH "Variable Documentation"
+.PP 
+.SS "struct \fBclientGlobalStruct\fP \fBclientGlobal\fP"
+.PP
+.SS "char* \fBW3_CLIENT_CACHE_DIR\fP = W3_CLIENT_CACHE_DIR_DEF"
+.PP
+.SS "char* \fBW3_CLIENT_INDEX_HTML\fP = W3_CLIENT_INDEX_HTML_DEF"
+.PP
+.SS "FILE* \fByyout\fP"
+.PP
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

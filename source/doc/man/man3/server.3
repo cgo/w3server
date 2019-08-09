@@ -1,0 +1,93 @@
+.TH "Server" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Server \- 
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBw3Server\fP"
+.br
+.ti -1c
+.RI "struct \fBw3ServerConnection\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "char * \fBw3HTMLGenerateError\fP (char *header, char *info, int pagecode)"
+.br
+.ti -1c
+.RI "\fBw3ServerConnection\fP * \fBw3ServerAccept\fP (\fBw3Server\fP *server)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerInit\fP (\fBw3Server\fP *server)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerClose\fP (\fBw3Server\fP *server)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerDisconnect\fP (\fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "char * \fBw3ServerGetToken\fP (char *str, int *idx)"
+.br
+.ti -1c
+.RI "char * \fBw3ServerGetPath\fP (char *str)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerSendFile\fP (char *path, \fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerSendError\fP (int errorcode, \fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerServeClient\fP (\fBw3Server\fP *server, \fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3StartServer\fP (int port)"
+.br
+.ti -1c
+.RI "void \fBw3ServerMessage\fP (const char *msg)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "char* w3HTMLGenerateError (char * header, char * info, int pagecode)"
+.PP
+Generates an appropriate error page. The returned pointer points to a newly created string that should be free()d after use. 
+.SS "\fBw3ServerConnection\fP* w3ServerAccept (\fBw3Server\fP * server)"
+.PP
+Accepts a connection for server server. 
+.SS "\fBboolean\fP w3ServerClose (\fBw3Server\fP * server)"
+.PP
+Closes the server. 
+.SS "\fBboolean\fP w3ServerDisconnect (\fBw3ServerConnection\fP * con)"
+.PP
+Closes a connection to the server. con is deleted. 
+.SS "char* w3ServerGetPath (char * str)"
+.PP
+Parses a 'GET ...' request and returns a newly allocated char* containing the full path to the requested file. Replace this by a more general request parser. 
+.SS "char* w3ServerGetToken (char * str, int * idx)"
+.PP
+Gets the first token out of str and returns it in a newly allocated char*. idx is an index to the next character in the string str. 
+.SS "\fBboolean\fP w3ServerInit (\fBw3Server\fP * server)"
+.PP
+Initialization for the server. 
+.SS "void w3ServerMessage (const char * msg)"
+.PP
+Prints message msg to local console. 
+.SS "\fBboolean\fP w3ServerSendError (int errorcode, \fBw3ServerConnection\fP * con)"
+.PP
+Takes the appropriate action to notify client at connection con of error errorcode. For errorcodes see file \fBw3server.c\fP (for now). 
+.SS "\fBboolean\fP w3ServerSendFile (char * path, \fBw3ServerConnection\fP * con)"
+.PP
+Sends file pointed to by path to connection con. If the file is in the HTDOC_BIN_BASE directory, it is executed and the standard output stored in a temporary file and sent to the client. The temporary files are stored in HTDOC_BIN_TEMPLATE and should be removed from time to time, e.g. by a cron job (not done automatically). 
+.SS "\fBboolean\fP w3ServerServeClient (\fBw3Server\fP * server, \fBw3ServerConnection\fP * con)"
+.PP
+After a connection has been established, serve the client. This function does not disconnect. 
+.SS "\fBboolean\fP w3StartServer (int port)"
+.PP
+Starts a server on port port. 

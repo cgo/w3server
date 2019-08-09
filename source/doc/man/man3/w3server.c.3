@@ -1,0 +1,211 @@
+.TH "w3server.c" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3server.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3server.h>\fP
+.br
+\fC#include <w3types.h>\fP
+.br
+\fC#include <w3comm.h>\fP
+.br
+\fC#include <w3error.h>\fP
+.br
+\fC#include <w3string.h>\fP
+.br
+\fC#include <w3thread.h>\fP
+.br
+\fC#include <w3html.h>\fP
+.br
+\fC#include <unistd.h>\fP
+.br
+\fC#include <netdb.h>\fP
+.br
+\fC#include <string.h>\fP
+.br
+\fC#include <strings.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include <stdio.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBserverGlobal\fP"
+.br
+.in -1c
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBMAXHOSTNAMELEN\fP   256"
+.br
+.ti -1c
+.RI "#define \fBW3_HTTP_VERSION\fP   1.0"
+.br
+.ti -1c
+.RI "#define \fBW3_ERROR_NOT_FOUND\fP   1"
+.br
+.ti -1c
+.RI "#define \fBW3_ERROR_SERVICE_UNAVAILABLE\fP   2"
+.br
+.ti -1c
+.RI "#define \fBW3_ERROR_BAD_REQUEST\fP   3"
+.br
+.ti -1c
+.RI "#define \fBW3_CMD_GET\fP   1"
+.br
+.ti -1c
+.RI "#define \fBW3_CMD_POST\fP   2"
+.br
+.ti -1c
+.RI "#define \fBW3_CMD_HEAD\fP   3"
+.br
+.ti -1c
+.RI "#define \fBW3_CMD_UNKNOWN\fP   4"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBw3ServerConnection\fP * \fBw3ServerAccept\fP (\fBw3Server\fP *server)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerInit\fP (\fBw3Server\fP *server)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerClose\fP (\fBw3Server\fP *server)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerDisconnect\fP (\fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "char * \fBw3ServerGetToken\fP (char *str, int *idx)"
+.br
+.ti -1c
+.RI "char * \fBw3ServerGetPath\fP (char *str)"
+.br
+.ti -1c
+.RI "char * \fBw3ServerReceiveRequest\fP (\fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "int \fBw3ServerIdentifyCommand\fP (char *cmd)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerRespond\fP (char *request, \fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerSendFile\fP (char *path, \fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerSendError\fP (int errorcode, \fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3ServerServeClient\fP (\fBw3Server\fP *server, \fBw3ServerConnection\fP *con)"
+.br
+.ti -1c
+.RI "void * \fBacceptThread\fP (void *p)"
+.br
+.ti -1c
+.RI "\fBboolean\fP \fBw3StartServer\fP (int port)"
+.br
+.ti -1c
+.RI "void \fBw3ServerMessage\fP (const char *msg)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "char \fBHTDOC_BASE\fP [] = '/home/christian/pgm/http-server-project/htdocs'"
+.br
+.ti -1c
+.RI "char \fBHTDOC_BIN_BASE\fP [] = '/bin'"
+.br
+.ti -1c
+.RI "char \fBHTDOC_BIN_TEMPLATE\fP [] = '/temp/temp.XXXXXX'"
+.br
+.ti -1c
+.RI "char \fBHTDOC_DOTHTML\fP [] = ''"
+.br
+.ti -1c
+.RI "char \fBHTDOC_ERRORFILE\fP [] = '/error.html'"
+.br
+.ti -1c
+.RI "char \fBHTDOC_STANDARDFILE\fP [] = 'index.html'"
+.br
+.ti -1c
+.RI "char \fBRESPONSE_OK\fP [] = 'HTTP/1.0 200 \\n'"
+.br
+.ti -1c
+.RI "char \fBRESPONSE_NOT_FOUND\fP [] = 'HTTP/1.0 404 \\n'"
+.br
+.ti -1c
+.RI "char \fBRESPONSE_SERVICE_UNAVAILABLE\fP [] = 'HTTP/1.0 503 \\n'"
+.br
+.ti -1c
+.RI "char \fBRESPONSE_BAD_REQUEST\fP [] = 'HTTP/1.0 400 \\n'"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define MAXHOSTNAMELEN   256"
+.PP
+.SS "#define W3_CMD_GET   1"
+.PP
+.SS "#define W3_CMD_HEAD   3"
+.PP
+.SS "#define W3_CMD_POST   2"
+.PP
+.SS "#define W3_CMD_UNKNOWN   4"
+.PP
+.SS "#define W3_ERROR_BAD_REQUEST   3"
+.PP
+.SS "#define W3_ERROR_NOT_FOUND   1"
+.PP
+.SS "#define W3_ERROR_SERVICE_UNAVAILABLE   2"
+.PP
+.SS "#define W3_HTTP_VERSION   1.0"
+.PP
+.SH "Function Documentation"
+.PP 
+.SS "void* acceptThread (void * p)"
+.PP
+.SS "int w3ServerIdentifyCommand (char * cmd)"
+.PP
+.SS "char* w3ServerReceiveRequest (\fBw3ServerConnection\fP * con)"
+.PP
+.SS "\fBboolean\fP w3ServerRespond (char * request, \fBw3ServerConnection\fP * con)"
+.PP
+.SH "Variable Documentation"
+.PP 
+.SS "char \fBHTDOC_BASE\fP[] = '/home/christian/pgm/http-server-project/htdocs'"
+.PP
+.SS "char \fBHTDOC_BIN_BASE\fP[] = '/bin'"
+.PP
+.SS "char \fBHTDOC_BIN_TEMPLATE\fP[] = '/temp/temp.XXXXXX'"
+.PP
+.SS "char \fBHTDOC_DOTHTML\fP[] = ''"
+.PP
+.SS "char \fBHTDOC_ERRORFILE\fP[] = '/error.html'"
+.PP
+.SS "char \fBHTDOC_STANDARDFILE\fP[] = 'index.html'"
+.PP
+.SS "char \fBRESPONSE_BAD_REQUEST\fP[] = 'HTTP/1.0 400 \\n'"
+.PP
+.SS "char \fBRESPONSE_NOT_FOUND\fP[] = 'HTTP/1.0 404 \\n'"
+.PP
+.SS "char \fBRESPONSE_OK\fP[] = 'HTTP/1.0 200 \\n'"
+.PP
+.SS "char \fBRESPONSE_SERVICE_UNAVAILABLE\fP[] = 'HTTP/1.0 503 \\n'"
+.PP
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

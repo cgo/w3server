@@ -1,0 +1,71 @@
+
+Important Notice:
+---------------------------------------------------------------------------
+1.
+ IF YOU HAVE TROUBLE COMPILING THE ADVANCED SERVER,
+ TYPE
+ make clean
+ THEN
+ make
+ (IT USES SOME CLIENT C FILES WHICH ARE COMPILED SLIGHTLY DIFFERENT FOR
+  THE SERVER)
+
+2.
+ IF YOUR SERVER CANNOT FIND ANY HTML FILES, YOU PROBABLY HAVE NOT
+ CHANGED THE  HTDOC_BASE  VARIABLE IN  src/w3server.c  !!
+ DO IT !
+---------------------------------------------------------------------------
+
+Theory of operation, server:
+-==========================-
+
+1. main.c
+---------
+Call to w3StartServer (in w3server.c), the argument being the
+portnumber.
+This call does everything the calling function wants, namely setting
+up a simple HTTP server for the given port :-)
+
+2. w3StartServer
+----------------
+Calls w3ServerInit to initialize the server.
+This sets up the socket and fills in the given w3Server structure.
+
+Sets up 5 threads of execution which do the following:
+ 1. Call w3ServerAccept to accept a connection request from a client.
+   1.a) when a connection is accepted, a new thread is immediately
+        started to replace the actual thread.
+ 2. Call w3ServerServeClient to handle anything the client could want.
+ 3. Call w3ServerDisconnect to close the connection.
+
+3. w3ServerAccept
+-----------------
+Calls the listen() library function to set the socket up to listen to
+one incoming connection request.
+Calls the accept() library function to accept a connection on the
+previously created socket (created by w3ServerInit).
+Returns a pointer to a w3ServerConnection structure.
+
+4. w3ServerServeClient
+----------------------
+Receives a request string from the (connected) client
+and responds to it using w3ServerRespond.
+
+5. w3ServerRespond
+------------------
+Parses the given request string for the requests
+GET, POST, HEAD, of which currently only
+GET is handled properly (I hope).
+It responds to GET by sending the requested file to the
+client.
+
+6. Error handling
+-----------------
+It was tried to catch any error that is likely to occur,
+but since this is an early development stage, nothing is
+guaranteed ;)
+Errors like file-not-found in a request are handled by
+sending an error page to the client (see routines in
+w3html.h / w3html.c).
+
+

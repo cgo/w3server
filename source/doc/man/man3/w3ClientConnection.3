@@ -1,0 +1,48 @@
+.TH "w3ClientConnection" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3ClientConnection \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3types.h>\fP
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "char * \fBhostname\fP"
+.br
+.ti -1c
+.RI "int \fBsocket\fP"
+.br
+.ti -1c
+.RI "sockaddr_in \fBsockaddr\fP"
+.br
+.ti -1c
+.RI "short int \fBport\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Connection data structure for the client. 
+.PP
+.SH "Field Documentation"
+.PP 
+.SS "char* \fBw3ClientConnection::hostname\fP"
+.PP
+Name of the host running the server. 
+.SS "short int \fBw3ClientConnection::port\fP"
+.PP
+Port number of the server process. HTTP servers normally run on port 80. 
+.SS "struct sockaddr_in \fBw3ClientConnection::sockaddr\fP"
+.PP
+Contains the sockaddr data used by lower level functions. Normally the user should not need to know about this. 
+.SS "int \fBw3ClientConnection::socket\fP"
+.PP
+Contains a valid socket descriptor after a connection has successfully been set up. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.

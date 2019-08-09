@@ -1,0 +1,40 @@
+.TH "w3Mail" 3 "6 Jul 2006" "Version 1.0" "w3server" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+w3Mail \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <w3smtp.h>\fP
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "char * \fBrecipient\fP"
+.br
+.ti -1c
+.RI "char * \fBsender\fP"
+.br
+.ti -1c
+.RI "char * \fBdata\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The mail data structure. The user does not necessarily need to know about this, but can use \fBw3CreateMail()\fP and \fBw3DestroyMail()\fP instead. 
+.PP
+.SH "Field Documentation"
+.PP 
+.SS "char* \fBw3Mail::data\fP"
+.PP
+.SS "char* \fBw3Mail::recipient\fP"
+.PP
+.SS "char* \fBw3Mail::sender\fP"
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for w3server from the source code.
